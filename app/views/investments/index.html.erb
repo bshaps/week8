@@ -1,0 +1,29 @@
+<div class="page-header">
+  <%= link_to "Update All", '#', class: 'pull-right btn btn-success' %>
+  <h1>Investments</h1>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Stock</th>
+      <th>Price</th>
+      <th>Shares</th>
+      <th>Value</th>
+      <th>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @investments.each do |investment| %>
+    <tr data-investment-id="<%= investment.id %>">
+      <td><%= investment.ticker %></td>
+      <td><%= number_to_currency(investment.price / 100.0) %></td>
+      <td><%= investment.shares %></td>
+      <td><%= number_to_currency(investment.value / 100.0) %></td>
+      <td>
+        <%= link_to "Update", '#', class: 'btn btn-sm btn-default btn-update' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
